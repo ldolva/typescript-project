@@ -2,4 +2,4 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 ## Exploring typescript
 
-\*\* this project is just for learning typescript, and experiment with GitHub
+\*\* this project is just for learning typescript, and experiment with GitHub, branches etc.
