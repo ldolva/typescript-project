@@ -1,9 +1,10 @@
 import React from "react";
+import { NavBarEnum } from "../../utils/enums";
 
-const Logout = () => {
+const Logout: React.FC = () => {
   return (
     <div>
-      <h1>Logout</h1>
+      <h1>{NavBarEnum.Logout}</h1>
     </div>
   );
 };

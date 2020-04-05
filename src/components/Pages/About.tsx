@@ -1,9 +1,11 @@
 import React from "react";
+import { NavBarEnum } from "../../utils/enums";
 
-const About = () => {
+const About: React.FC = () => {
   return (
     <div>
-      <h1>About</h1>
+      <h1>{NavBarEnum.About}</h1>
+      <section>This is an app for testing</section>
     </div>
   );
 };

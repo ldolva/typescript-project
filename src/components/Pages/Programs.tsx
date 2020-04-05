@@ -1,9 +1,12 @@
 import React from "react";
+import { NavBarEnum } from "../../utils/enums";
 
-function Programs() {
-  return <div></div>;
-}
-
-Programs.propTypes = {};
+const Programs: React.FC = () => {
+  return (
+    <div>
+      <h1>{NavBarEnum.Programs}</h1>;
+    </div>
+  );
+};
 
 export default Programs;

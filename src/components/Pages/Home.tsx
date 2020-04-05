@@ -1,9 +1,10 @@
 import React from "react";
+import { NavBarEnum } from "../../utils/enums";
 
-const Home = () => {
+const Home: React.FC = () => {
   return (
     <div>
-      <h1>Home</h1>
+      <h1>{NavBarEnum.Home}</h1>
     </div>
   );
 };
