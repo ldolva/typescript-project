@@ -6,11 +6,10 @@ import Typography from "@material-ui/core/Typography";
 
 const useStyles = makeStyles((theme) => ({
   root: {
-    marginTop: theme.spacing(7),
+    marginTop: theme.spacing(2),
   },
   header: {
     color: theme.palette.text.secondary,
-
     marginBottom: theme.spacing(2),
   },
   content: {

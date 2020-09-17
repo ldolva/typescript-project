@@ -8,36 +8,20 @@ import { text } from "../utils/constants";
 import Switch from "@material-ui/core/Switch";
 import { useLocation } from "react-router-dom";
 import { makeStyles } from "@material-ui/core/styles";
-import { theme as themeObject } from "../style/theme";
+import { theme } from "../style/theme";
 
-const useStyles = makeStyles((theme) => ({}));
+const useStyles = makeStyles((theme) => ({
+  navbar: {
+    margin: "auto",
+  },
+}));
 
 const NavBar = () => {
   const { Home, Programs, About, Logout } = NavBarEnum;
-  const { paths } = text;
 
-  const [theme, setTheme] = useState(themeObject);
-
-  // const useDarkMode = ()=> {
-
-  //   const {palette:{type}} = theme
-  //   const toggleDarkMode = ()=> {
-  //     const updatedTheme = {...theme, palette:{...theme.palette, type: type ==="light"?"dark":"light"}}
-  //     setTheme(updatedTheme)
-  //   }
-
-  //   return [theme,toggleDarkMode]
-  // }
-  const style = {
-    navbar: {
-      margin: "auto",
-    },
-  };
+  const classes = useStyles();
   const location = useLocation();
 
-  interface ILocation {
-    pathname: string;
-  }
   const currentNavBarStyle = (path: string) => {
     if (location.pathname === path)
       return {
@@ -46,47 +30,44 @@ const NavBar = () => {
   };
 
   return (
-    <>
-      <AppBar>
-        <Toolbar style={style.navbar}>
-          <Button
-            color="inherit"
-            style={currentNavBarStyle("/")}
-            component={Link}
-            to={paths.home}
-          >
-            {Home}
-          </Button>
-          <Button
-            color="inherit"
-            component={Link}
-            style={currentNavBarStyle("/programs")}
-            to={paths.programs}
-          >
-            {Programs}
-          </Button>
-          <Button
-            color="inherit"
-            style={currentNavBarStyle("/about")}
-            component={Link}
-            to={paths.about}
-          >
-            {About}
-          </Button>
-          <Button
-            color="inherit"
-            style={currentNavBarStyle("/logout")}
-            component={Link}
-            to={paths.logout}
-          >
-            {Logout}
-          </Button>
-
-          <Switch></Switch>
-          <small>Turn off darkmode</small>
-        </Toolbar>
-      </AppBar>
-    </>
+    <AppBar position="static">
+      <Toolbar className={classes.navbar}>
+        <Button
+          color="inherit"
+          style={currentNavBarStyle("/")}
+          component={Link}
+          to={text.paths.home}
+        >
+          {Home}
+        </Button>
+        <Button
+          color="inherit"
+          component={Link}
+          style={currentNavBarStyle("/programs")}
+          to={text.paths.programs}
+        >
+          {Programs}
+        </Button>
+        <Button
+          color="inherit"
+          style={currentNavBarStyle("/about")}
+          component={Link}
+          to={text.paths.about}
+        >
+          {About}
+        </Button>
+        <Button
+          color="inherit"
+          style={currentNavBarStyle("/logout")}
+          component={Link}
+          to={text.paths.logout}
+        >
+          {Logout}
+        </Button>
+        <Switch />
+        <small>Turn off darkmode</small>
+      </Toolbar>
+    </AppBar>
   );
 };
 

@@ -21,10 +21,17 @@ const Home: React.FC = () => {
     id: number;
   }
   const [users, setUsers] = useState<IUsers[]>([]);
-
+  const [loading, setLoading] = useState<boolean>(false);
   const getUsers = async () => {
-    const res = await axios.get("https://jsonplaceholder.typicode.com/users");
-    setUsers(res.data);
+    setLoading(true);
+    try {
+      const res = await axios.get("https://jsonplaceholder.typicode.com/users");
+      setUsers(res.data);
+    } catch (error) {
+      console.log(error);
+    } finally {
+      setLoading(false);
+    }
   };
 
   useEffect(() => {
@@ -43,15 +50,19 @@ const Home: React.FC = () => {
   // }, []);
 
   return (
-    <Container style={{ textAlign: "center" }}>
+    <Container style={{ textAlign: "center", minHeight: "100%" }}>
       <h1 style={{ color: "#f6c90e" }}>{NavBarEnum.Home}</h1>
-      <ul style={{ listStyleType: "none" }}>
-        {users.map((user) => (
-          <li key={user.id} style={{ color: "white" }}>
-            {user.name}
-          </li>
-        ))}
-      </ul>
+      {loading ? (
+        <p>loading</p>
+      ) : (
+        <ul style={{ listStyleType: "none" }}>
+          {users.map((user) => (
+            <li key={user.id} style={{ color: "white" }}>
+              {user.name}
+            </li>
+          ))}
+        </ul>
+      )}
     </Container>
   );
 };

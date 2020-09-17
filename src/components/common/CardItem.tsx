@@ -12,13 +12,20 @@ interface Props {
   content: string;
   children?: ReactNode;
   variant: any;
+  className?: string;
 }
 
-const useStyles = makeStyles(() => ({
+const useStyles = makeStyles((theme) => ({
   root: {
     minWidth: 275,
+    // boxShadow: "0 0 9px 1px black",
     maxWidth: 300,
     background: "#758184",
+    border: "solid #3a4750 2px",
+    "&:hover": {
+      border: `solid ${theme.palette.secondary.main} 2px`,
+      cursor: "pointer",
+    },
   },
   title: {
     fontSize: 14,
